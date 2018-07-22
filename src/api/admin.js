@@ -9,21 +9,21 @@ export function fetchList(query) {
 }
 export function fetchPv(pv) {
   return request({
-    url: '/admin/pv',
+    url: '/admin/admin/pv',
     method: 'get',
     params: { pv }
   })
 }
 export function update(data) {
   return request({
-    url: '/admin',
+    url: '/admin/admin',
     method: 'put',
     data
   })
 }
 export function create(data) {
   return request({
-    url: '/admin',
+    url: '/admin/admin',
     method: 'post',
     data
   })

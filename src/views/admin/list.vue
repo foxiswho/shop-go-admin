@@ -111,31 +111,31 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form :rules="rules" ref="dataForm" :model="temp" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
-        <el-form-item label="用户名" prop="type">
+        <el-form-item label="用户名" prop="username">
           <el-input v-model="temp.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱" prop="type">
+        <el-form-item label="邮箱" >
           <el-input v-model="temp.mail" placeholder="请输入邮箱"></el-input>
         </el-form-item>
-        <el-form-item label="昵称" prop="type">
+        <el-form-item label="昵称" >
           <el-input v-model="temp.mail" placeholder="请输入昵称"></el-input>
         </el-form-item>
-        <el-form-item label="显示名称" prop="type">
+        <el-form-item label="显示名称" >
           <el-input v-model="temp.name" placeholder="请输入显示名称"></el-input>
         </el-form-item>
-        <el-form-item label="真实姓名" prop="type">
+        <el-form-item label="真实姓名" >
           <el-input v-model="temp.true_name" placeholder="请输入真实姓名"></el-input>
         </el-form-item>
-        <el-form-item label="工号" prop="type">
+        <el-form-item label="工号" >
           <el-input v-model="temp.job_no" placeholder="请输入工号"></el-input>
         </el-form-item>
-        <el-form-item label="qq" prop="type">
+        <el-form-item label="qq" >
           <el-input v-model="temp.qq" placeholder="请输入qq"></el-input>
         </el-form-item>
-        <el-form-item label="手机" prop="type">
+        <el-form-item label="手机" >
           <el-input v-model="temp.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
-        <el-form-item label="电话" prop="type">
+        <el-form-item label="电话">
           <el-input v-model="temp.phone" placeholder="请输入电话"></el-input>
         </el-form-item>
       </el-form>
@@ -219,9 +219,8 @@ export default {
       dialogPvVisible: false,
       pvData: [],
       rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        username: [{ required: true, message: '用户名 必填', trigger: 'blur' }],
+        mail: [{ required: true, message: '邮箱 必填', trigger: 'blur' }]
       },
       downloadLoading: false
     }
