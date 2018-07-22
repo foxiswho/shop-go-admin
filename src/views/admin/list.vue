@@ -28,11 +28,6 @@
           <span>{{scope.row.id}}</span>
         </template>
       </el-table-column>
-      <el-table-column width="150px" align="center" label="加入时间">
-        <template slot-scope="scope">
-          <span>{{scope.row.gmt_create | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
-        </template>
-      </el-table-column>
       <el-table-column width="150px" label="显示名称">
         <template slot-scope="scope">
           <span>{{scope.row.username}}</span>
@@ -73,16 +68,26 @@
           <span>0</span>
         </template>
       </el-table-column>
-
+      <el-table-column width="150px" align="center" label="加入时间">
+        <template slot-scope="scope">
+          <span>{{scope.row.gmt_create | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column width="150px" align="center" label="登录时间">
+        <template slot-scope="scope">
+          <span>{{scope.row.gmt_modified | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column width="150px" align="center" label="IP">
+        <template slot-scope="scope">
+          <span>{{scope.row.ip}}</span>
+        </template>
+      </el-table-column>
 
       <el-table-column align="center" :label="$t('table.actions')" min-width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{$t('table.edit')}}</el-button>
-          <el-button v-if="scope.row.is_del!='published'" size="mini" type="success" @click="handleModifyStatus(scope.row,'published')">{{$t('table.publish')}}
-          </el-button>
-          <el-button v-if="scope.row.is_del!='draft'" size="mini" @click="handleModifyStatus(scope.row,'draft')">{{$t('table.draft')}}
-          </el-button>
-          <el-button v-if="scope.row.is_del!='deleted'" size="mini" type="danger" @click="handleModifyStatus(scope.row,'deleted')">{{$t('table.delete')}}
+          <el-button v-if="scope.row.is_del!=1" size="mini" type="danger" @click="handleModifyStatus(scope.row,'deleted')">{{$t('table.delete')}}
           </el-button>
         </template>
       </el-table-column>
