@@ -16,7 +16,7 @@
         </el-option>
       </el-select>
       <el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">{{$t('table.search')}}</el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit">{{$t('table.add')}}</el-button>
+      <el-button class="filter-item" @click="handleCreate" type="primary" icon="el-icon-edit">{{$t('table.add')}}</el-button>
       <el-button class="filter-item" type="primary" :loading="downloadLoading" v-waves icon="el-icon-download" @click="handleDownload">{{$t('table.export')}}</el-button>
       <el-checkbox class="filter-item" style='margin-left:15px;' @change='tableKey=tableKey+1' v-model="showReviewer">{{$t('table.reviewer')}}</el-checkbox>
     </div>
@@ -87,8 +87,19 @@
       <el-table-column align="center" :label="$t('table.actions')" min-width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{$t('table.edit')}}</el-button>
-          <el-button v-if="scope.row.is_del!=1" size="mini" type="danger" @click="handleModifyStatus(scope.row,'deleted')">{{$t('table.delete')}}
-          </el-button>
+          <el-button size="mini" type="danger" @click="handleModifyStatus(scope.row,'deleted')">{{$t('table.delete')}}</el-button>
+          <el-dropdown>
+            <el-button type="primary" size="mini">
+              更多<i class="el-icon-arrow-down el-icon--right"></i>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>黄金糕</el-dropdown-item>
+              <el-dropdown-item>狮子头</el-dropdown-item>
+              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <el-dropdown-item>双皮奶</el-dropdown-item>
+              <el-dropdown-item>蚵仔煎</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
       </el-table-column>
     </el-table>
@@ -100,31 +111,32 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form :rules="rules" ref="dataForm" :model="temp" label-position="left" label-width="70px" style='width: 400px; margin-left:50px;'>
-        <el-form-item :label="$t('table.type')" prop="type">
-          <el-select class="filter-item" v-model="temp.type" placeholder="Please select">
-            <el-option v-for="item in  calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key">
-            </el-option>
-          </el-select>
+        <el-form-item label="用户名" prop="type">
+          <el-input v-model="temp.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('table.date')" prop="timestamp">
-          <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date">
-          </el-date-picker>
+        <el-form-item label="邮箱" prop="type">
+          <el-input v-model="temp.mail" placeholder="请输入邮箱"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('table.title')" prop="title">
-          <el-input v-model="temp.title"></el-input>
+        <el-form-item label="昵称" prop="type">
+          <el-input v-model="temp.mail" placeholder="请输入昵称"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('table.status')">
-          <el-select class="filter-item" v-model="temp.status" placeholder="Please select">
-            <el-option v-for="item in  statusOptions" :key="item" :label="item" :value="item">
-            </el-option>
-          </el-select>
+        <el-form-item label="显示名称" prop="type">
+          <el-input v-model="temp.name" placeholder="请输入显示名称"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('table.importance')">
-          <el-rate style="margin-top:8px;" v-model="temp.importance" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max='3'></el-rate>
+        <el-form-item label="真实姓名" prop="type">
+          <el-input v-model="temp.true_name" placeholder="请输入真实姓名"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('table.remark')">
-          <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="Please input" v-model="temp.remark">
-          </el-input>
+        <el-form-item label="工号" prop="type">
+          <el-input v-model="temp.job_no" placeholder="请输入工号"></el-input>
+        </el-form-item>
+        <el-form-item label="qq" prop="type">
+          <el-input v-model="temp.qq" placeholder="请输入qq"></el-input>
+        </el-form-item>
+        <el-form-item label="手机" prop="type">
+          <el-input v-model="temp.mobile" placeholder="请输入手机号"></el-input>
+        </el-form-item>
+        <el-form-item label="电话" prop="type">
+          <el-input v-model="temp.phone" placeholder="请输入电话"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
