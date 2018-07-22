@@ -29,6 +29,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     historyApiFallback: true,
     hot: true,
     compress: true,
+    disableHostCheck: true,//解决127.0.0.1指向其他域名时出现"Invalid Host header"问题
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,

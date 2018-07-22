@@ -16,6 +16,7 @@ for (let i = 0; i < count; i++) {
 export default {
   getList: () => {
     return {
+      code: 200,
       total: List.length,
       items: List
     }

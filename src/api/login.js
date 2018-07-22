@@ -24,3 +24,22 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function getUserInfo(token) {
+  return request({
+    url: '/admin/admin/info',
+    method: 'get'
+  })
+}
+
+export function loginByUsername(username, password) {
+  const data = {
+    username,
+    password
+  }
+  return request({
+    url: '/admin_login/login',
+    method: 'post',
+    data
+  })
+}
