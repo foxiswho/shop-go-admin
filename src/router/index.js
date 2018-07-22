@@ -41,6 +41,19 @@ export const constantRouterMap = [
     }]
   },
   {
+    path: '/admin',
+    component: Layout,
+    redirect: '/admin/list',
+    meta: {
+      title: '管理员',
+      icon: 'component'
+    },
+    children: [
+      { path: 'index', component: () => import('@/views/admin/list'), name: 'Admin', meta: { title: '管理员', icon: 'documentation', noCache: true }},
+      { path: 'index', component: () => import('@/views/admin/list'), name: 'Admin', meta: { title: '角色', icon: 'documentation', noCache: true }}
+    ]
+  },
+  {
     path: '/documentation',
     component: Layout,
     redirect: '/documentation/index',
