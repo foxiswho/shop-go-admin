@@ -30,7 +30,7 @@
       </el-table-column>
       <el-table-column width="150px" label="显示名称">
         <template slot-scope="scope">
-          <span>{{scope.row.username}}</span>
+          <span>{{scope.row.name}}</span>
         </template>
       </el-table-column>
       <el-table-column width="110px" align="center" label="用户名">
@@ -55,7 +55,7 @@
       </el-table-column>
       <el-table-column class-name="status-col" label="主角色" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.role_id | statusFilter">{{scope.row.role_id}}</el-tag>
+          <el-tag>{{scope.row.ExtData.role_id_name}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column class-name="status-col" label="扩展角色" width="100">
@@ -65,7 +65,7 @@
       </el-table-column>
       <el-table-column align="center" label="状态" width="95">
         <template slot-scope="scope">
-          <span>0</span>
+          <span>{{scope.row.ExtData.is_del_name}}</span>
         </template>
       </el-table-column>
       <el-table-column width="150px" align="center" label="加入时间">
