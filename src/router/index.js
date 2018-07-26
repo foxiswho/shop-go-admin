@@ -54,6 +54,20 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/design',
+    component: Layout,
+    redirect: '/design/service',
+    meta: {
+      title: '设计',
+      icon: 'component'
+    },
+    children: [
+      { path: 'service', component: () => import('@/views/design/service'), name: 'Service', meta: { title: '生成服务', icon: 'documentation', noCache: true }},
+      { path: 'controllers', component: () => import('@/views/admin/list'), name: 'Admin', meta: { title: '生成控制器', icon: 'documentation', noCache: true }},
+      { path: 'models', component: () => import('@/views/design/models'), name: 'Models', meta: { title: '生成表结构', icon: 'documentation', noCache: true }}
+    ]
+  },
+  {
     path: '/documentation',
     component: Layout,
     redirect: '/documentation/index',
